@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 # add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   has_many :carts
-  has_one :current_cart, :class_name => "Cart"
+  belongs_to :current_cart, :class_name => "Cart"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
