@@ -1,14 +1,10 @@
 class LineItemsController < ApplicationController
-  before_filter :authenticate_user!
-  before_action :initialize_cart, only: [:create]
+  #before_filter :authenticate_user!
 
   def create
     initialize_cart
-    # binding.pry
-    item = Item.find(params[:id])
-
-    @line_item = current_cart.add_item(item.id)
-
+    @line_item = LineItem.new
+    binding.pry
     if @line_item.save
       redirect_to cart_path(current_cart), alert: "Added Item to Cart!"
     else
@@ -16,4 +12,8 @@ class LineItemsController < ApplicationController
     end
   end
 
+# private
+#   def line_item_params
+#     params.require(:line_item).permit(:cart_id)
+#   end
 end
