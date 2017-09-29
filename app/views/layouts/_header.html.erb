@@ -1,8 +1,8 @@
 <div class ="nav navbar-nav">
   <p class="navbar-text"> WFlatiron Store</p>
   <p class="active"><%= link_to "Store Home", store_path, class: "navbar-brand" %></p>
-</div
-<div
+</div>
+<div>
   <% if !!user_signed_in? %>
     <p class="navbar-text">Signed in as <%= current_user.email %></p>
     <p><%= link_to "Sign out", destroy_user_session_url, method: :delete %></p>
@@ -11,8 +11,8 @@
     <p><%= link_to "sign in", new_user_session_path %></p>
   <% end %>
 <div>
-<div
+<div>
   <% if current_user && current_user.current_cart %>
-    <p> <%= link_to "Cart", cart_path(current_user.current_cart) %></p>
+    <p> <%= link_to "Cart", cart_path(current_cart) %></p>
   <% end %>
-</div
+</div>

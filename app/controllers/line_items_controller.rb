@@ -2,9 +2,11 @@ class LineItemsController < ApplicationController
   #before_filter :authenticate_user!
 
   def create
-    initialize_cart
-    @line_item = LineItem.new(item_id: params[:item_id])
     #raise params.inspect
+    initialize_cart
+    #binding.pry
+    @line_item = current_cart.add_item(params[:item][:id])
+    #binding.pry
     if @line_item.save
       redirect_to cart_path(current_cart), alert: "Added Item to Cart!"
     else
@@ -12,9 +14,4 @@ class LineItemsController < ApplicationController
     end
   end
 
-# private
-#   def line_item_params
-#     #raise params.inspect
-#     params.require(:line_item).permit(:item_id)
-#   end
 end

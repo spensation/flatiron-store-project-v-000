@@ -5,6 +5,7 @@
 <% end %>
 
 <% @cart.line_items.each do |i| %>
+<%#  binding.pry %>
   <p><%= link_to i.item.title, item_path(i.item) %> | <%= number_to_currency(i.item.price) %> | Quantity: <%= i.quantity %> | <% if i.item.inventory < 5 %>
     <strong>There are only <%= line_item.item.inventory %> left in stock.</strong>
   <% end %> </p>
