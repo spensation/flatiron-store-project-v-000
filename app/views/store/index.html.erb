@@ -5,12 +5,8 @@
 <% @items.each do |item| %>
   <p><%= item.title %> | <%= "$#{item.price.to_f/100}" %> |</p>
   <% if current_user %>
-    <%= form_tag line_items_path(item) do %>
-      <input type="hidden" name="item[id]" value= "<%= "#{item.id}" %>">
-      <input type="hidden" name="item[title]" value="<%= "#{item.title}" %>">
-      <input type="hidden" name="item[price]" value="<%= "#{item.price}" %>">
-      <button type="submit" value="Add to Cart" >
+    <%= button_to "Add to Cart", line_items_path(item_id: item) %>
+
     <% end %>
 
   <% end %>
-<% end %>
