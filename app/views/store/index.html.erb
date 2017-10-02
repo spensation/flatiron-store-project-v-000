@@ -1,12 +1,15 @@
-<% @categories.each do |category| %>
-  <%= link_to category.title, category_path(category) %>
-<% end %>
-
-<% @items.each do |item| %>
-  <p><%= item.title %> | <%= "$#{item.price.to_f/100}" %> |</p>
-  <% if current_user %>
-    <%= button_to "Add to Cart", line_items_path(item_id: item) %>
-
-    <% end %>
-
+<br></br>
+<div class="catList">
+  <% @categories.each do |category| %>
+    <%= link_to category.title, category_path(category) %>
   <% end %>
+</div>
+<br></br>
+<div class="itemList">
+  <% @items.each do |item| %>
+    <p><%= item.title %> | <%= "$#{item.price.to_f/100}" %> |</p>
+    <% if current_user %>
+      <%= button_to "Add to Cart", line_items_path(item_id: item) %>
+    <% end %>
+  <% end %>
+</div>

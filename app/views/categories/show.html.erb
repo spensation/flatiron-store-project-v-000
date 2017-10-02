@@ -6,13 +6,8 @@
       <%= link_to item.title, item_path(item) %> |
       <%= "$#{item.price.to_f/100}" %>
     </li>
-      <% if current_user %>
-      <%= form_tag line_items_path(item) do %>
-        <input type="hidden" name="item[id]" value= "<%= "#{item.id}" %>">
-        <input type="hidden" name="item[title]" value="<%= "#{item.title}" %>">
-        <input type="hidden" name="item[price]" value="<%= "#{item.price}" %>">
-        <input type="submit" value="Add to Cart" >
-      <% end %>
+    <% if current_user %>
+      <%= button_to "Add to Cart", line_items_path(item_id: item) %>
     <% end %>
   <% end %>
 </ul>

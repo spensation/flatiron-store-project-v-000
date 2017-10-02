@@ -1,14 +1,17 @@
-<div class ="nav navbar-nav">
+<div class="topnav" id="myTopnav">
    Flatiron Store
-  <%= link_to "Store Home", store_path %>
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>
-    <%= link_to "Sign out", destroy_user_session_url, method: :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %>
-    <%= link_to "sign in", new_user_session_path %>
-  <% end %>
-  <% if current_user && current_user.current_cart %>
-  <%= link_to "Cart", cart_path(current_cart) %>
-  <% end %><br>
+  <ul>
+    <li><%= link_to "Store Home", store_path %></li>
+    <% if user_signed_in? %>
+      Signed in as <%= current_user.email %>
+      <li><%= link_to "Sign out", destroy_user_session_url, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Sign up", new_user_registration_path %></li>
+      <li><%= link_to "sign in", new_user_session_path %></li>
+    <% end %>
+
+    <% if current_user && current_user.current_cart %>
+    <li><%= link_to "Cart", cart_path(current_cart) %></li>
+    <% end %><br>
+  </ul>
 </div>
