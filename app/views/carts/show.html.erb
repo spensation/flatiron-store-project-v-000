@@ -1,12 +1,11 @@
 <h1>Your Cart</h1>
 
-<% if notice %>
-  <p><%= notice %></p>
+<% if alert %>
+  <p><%= alert %></p>
 <% end %>
 
 <% @cart.line_items.each do |i| %>
-<%#  binding.pry %>
-  <p><%= link_to i.item.title, item_path(i.item) %> | <%= number_to_currency(i.item.price) %> | Quantity: <%= i.quantity %> | <% if i.item.inventory < 5 %>
+  <p><%= link_to i.item.title, item_path(i.item) %> | <%= "$#{i.item.price.to_f/100}" %> | Quantity: <%= i.quantity %> | <% if i.item.inventory < 5 %>
     <strong>There are only <%= line_item.item.inventory %> left in stock.</strong>
   <% end %> </p>
 <% end %>
